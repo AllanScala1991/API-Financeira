@@ -41,7 +41,7 @@ class userController {
         const userDelete = await deleteUserService.deleteUser(id);
 
         return response.json(userDelete);
-    }
+    };
 
     async recoveryPassword (request: Request, response : Response) {
         const { email } = request.body;

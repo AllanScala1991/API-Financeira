@@ -4,6 +4,7 @@ import { Op } from 'sequelize';
 import nodemailer from 'nodemailer';
 import { Chance } from 'chance';
 
+
 interface IUser {
     id: string;
     name : string;
@@ -81,11 +82,13 @@ class userService {
             return { "status": false, "message": "Todos os campos devem ser preenchidos." }
         };
 
+        const passwordCrypt = await crypt.hash(password, 8);
+
         const userUpdate = await userModel.userCreate.update({
             Name: name,
             Email: email,
             Username: username,
-            Password: password
+            Password: passwordCrypt
         }, {
             where: {
                 id: id
