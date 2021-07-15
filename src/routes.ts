@@ -16,7 +16,7 @@ const paymentTypeController = new paymentType.paymentTypeController();
 // ROTAS DE USER
 router.post('/user', userController.createUser);
 router.get("/user/:username", userAuthenticated, userController.editUserGet);
-router.patch('/user', userAuthenticated, userController.editUserSave);
+router.put('/user', userAuthenticated, userController.editUserSave);
 router.delete('/user', userAuthenticated, userController.deleteUser);
 router.post('/user/recovery', userController.recoveryPassword);
 
@@ -25,7 +25,7 @@ router.post('/login', loginController.login);
 
 // ROTAS DAS CATEGORIAS DE PAGAMENTO
 router.post('/category', userAuthenticated, paymentCategoryController.createPaymentCategory);
-router.patch('/category', userAuthenticated, paymentCategoryController.editPaymentCategory);
+router.put('/category', userAuthenticated, paymentCategoryController.editPaymentCategory);
 router.delete('/category', userAuthenticated, paymentCategoryController.deletePaymentCategory);
 router.get('/category/:name', userAuthenticated, paymentCategoryController.getPaymentCategory);
 
