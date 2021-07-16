@@ -4,6 +4,7 @@ import user from './controllers/user';
 import login from './controllers/login';
 import paymentCategory from "./controllers/paymentCategory";
 import paymentType from "./controllers/paymentType";
+import payment from "./controllers/payment";
 
 const router = Router();
 
@@ -12,6 +13,7 @@ const userController = new user.userController();
 const loginController = new login.loginController();
 const paymentCategoryController = new paymentCategory.paymentCategoryController();
 const paymentTypeController = new paymentType.paymentTypeController();
+const paymentController = new payment.paymentController();
 
 // ROTAS DE USER
 router.post('/user', userController.createUser);
@@ -34,5 +36,11 @@ router.post('/types', userAuthenticated, paymentTypeController.createPaymentType
 router.put('/types', userAuthenticated, paymentTypeController.editPaymentType);
 router.delete('/types/:id', userAuthenticated, paymentTypeController.deletePaymentType);
 router.get('/types/:name', userAuthenticated, paymentTypeController.getPaymentType);
+
+// ROTAS DOS PAGAMENTOS
+router.post('/payment', userAuthenticated, paymentController.createPayment);
+router.put('/payment', userAuthenticated, paymentController.editPayment);
+router.delete('/payment/:id', userAuthenticated, paymentController.deletePayment);
+router.get('/payment/:name', userAuthenticated, paymentController.getPayment);
 
 export { router };
