@@ -5,6 +5,7 @@ import login from './controllers/login';
 import paymentCategory from "./controllers/paymentCategory";
 import paymentType from "./controllers/paymentType";
 import payment from "./controllers/payment";
+import receive from "./controllers/receive";
 
 const router = Router();
 
@@ -14,6 +15,7 @@ const loginController = new login.loginController();
 const paymentCategoryController = new paymentCategory.paymentCategoryController();
 const paymentTypeController = new paymentType.paymentTypeController();
 const paymentController = new payment.paymentController();
+const receiveController = new receive.receiveController();
 
 // ROTAS DE USER
 router.post('/user', userController.createUser);
@@ -42,5 +44,11 @@ router.post('/payment', userAuthenticated, paymentController.createPayment);
 router.put('/payment', userAuthenticated, paymentController.editPayment);
 router.delete('/payment/:id', userAuthenticated, paymentController.deletePayment);
 router.get('/payment/:name', userAuthenticated, paymentController.getPayment);
+
+// ROTAS DOS RECEBIMENTOS
+router.post('/receive', userAuthenticated, receiveController.createReceive);
+router.put('/receive', userAuthenticated, receiveController.editReceive);
+router.delete('/receive/:id', userAuthenticated, receiveController.deleteReceive);
+router.get('/receive/:name', userAuthenticated, receiveController.getReceive);
 
 export { router };

@@ -1,5 +1,4 @@
 import payment from "../models/payment";
-
 interface IPayment {
     name : string;
     valor: number;
@@ -12,7 +11,6 @@ interface IPayment {
     registerRefer: string;
 }
 
-
 class paymentService {
 
     async createPayment ({name, valor, paymentMethod, category, description, datePayment, installments, paymentRefer,registerRefer} : IPayment) {
@@ -21,7 +19,7 @@ class paymentService {
 
             const emptyValue = info.indexOf("");
 
-            if (!emptyValue) {
+            if (emptyValue != -1) {
                 return { "status": false, "message": "Todos os campos devem ser preenchidos." };
             };
 
@@ -97,7 +95,7 @@ class paymentService {
         const info = [name, valor, paymentMethod, category, description, datePayment, installments, paymentRefer, registerRefer];
 
         const emptyValue = info.indexOf("");
-        if (!emptyValue) {
+        if (emptyValue != -1) {
             return { "status": false, "message": "Todos os campos devem ser preenchidos." };
         };
 
