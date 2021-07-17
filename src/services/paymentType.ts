@@ -7,10 +7,12 @@ class paymentTypeService {
             return { "status": false, "message": "Insira um nome válido." }
         };
 
+        const nameLower = name.toLowerCase();
+
         const nameExists = await paymentType.typeCreate.findAll({
             raw: true,
             where: {
-                Name: name
+                Name: nameLower
             }
         });
 
@@ -19,7 +21,7 @@ class paymentTypeService {
         };
 
         const typeRegister = await paymentType.typeCreate.create({
-            Name: name
+            Name: nameLower
         });
 
         if (!typeRegister) {
@@ -45,8 +47,10 @@ class paymentTypeService {
             return { "status": false, "message": "Nenhum tipo encontrado para editar." }
         };
 
+        const nameLower = name.toLowerCase();
+
         const typeUpdate = await paymentType.typeCreate.update({
-            Name: name
+            Name: nameLower
         }, {
             where: {
                 id: id
@@ -98,20 +102,24 @@ class paymentTypeService {
             };
 
             return { "status": true, "data": typeGetAll };
-        };
+        }else {
 
-        const typeGetAll = await paymentType.typeCreate.findAll({
-            raw: true,
-            where: {
-                Name: name
-            }
-        });
+            const nameLower = name.toLowerCase();
+    
+            const typeGetAll = await paymentType.typeCreate.findAll({
+                raw: true,
+                where: {
+                    Name: nameLower
+                }
+            });
+    
+            if (typeGetAll.length <= 0) {
+                return { "status": false, "message": "Nenhum tipo de pagamento localizado." }
+            };
+    
+            return { "status": true, "data": typeGetAll };
+        }
 
-        if (typeGetAll.length <= 0) {
-            return { "status": false, "message": "Nenhum tipo de pagamento localizado." }
-        };
-
-        return { "status": true, "data": typeGetAll };
     };
 }
 

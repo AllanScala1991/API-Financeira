@@ -16,7 +16,6 @@ class receiveService {
         const info = [name, valor, receiveMethod, description, dateReceive, receiveRefer, registerRefer];
 
         const emptyValue = info.indexOf("");
-        console.log(emptyValue);
 
         if (emptyValue != -1) {
             return { "status": false, "message": "Todos os campos devem ser preenchidos." };
@@ -26,8 +25,10 @@ class receiveService {
 
         const floatValor = parseFloat(valueConvert);
 
+        const nameLower = name.toLowerCase();
+
         const receiveCreate = await receive.receiveCreate.create({
-            Name: name,
+            Name: nameLower,
             Valor: floatValor,
             ReceiveMethod: receiveMethod,
             Description: description,
@@ -68,8 +69,10 @@ class receiveService {
             return { "status": false, "message": "Nenhum recebimento localizado." }
         };
 
+        const nameLower = name.toLowerCase();
+
         const updateReceive = await receive.receiveCreate.update({
-            Name: name,
+            Name: nameLower,
             Valor: floatValor,
             ReceiveMethod: receiveMethod,
             Description: description,
@@ -131,10 +134,12 @@ class receiveService {
             return { "status": true, "data": getAllReceives };
         };
 
+        const nameLower = name.toLowerCase();
+
         const getNameReceive = await receive.receiveCreate.findAll({
             raw: true,
             where: {
-                Name: name
+                Name: nameLower
             }
         });
 

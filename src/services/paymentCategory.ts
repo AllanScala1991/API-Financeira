@@ -8,10 +8,12 @@ class paymentCategoryService {
             return { "status": false, "message": "Insira um nome válido." }
         };
 
+        const nameLower = name.toLowerCase();
+
         const categoryExists = await paymentCategory.categoryCreate.findAll({
             raw: true,
             where: {
-                Name: name
+                Name: nameLower
             }
         });
 
@@ -20,7 +22,7 @@ class paymentCategoryService {
         };
 
         const categoryCreate = await paymentCategory.categoryCreate.create({
-            Name: name
+            Name: nameLower
         });
 
         if (!categoryCreate) {
@@ -46,8 +48,10 @@ class paymentCategoryService {
             return { "status": false, "message": "Erro ao atualizar a categoria, tente novamenete." }
         }
 
+        const nameLower = name.toLowerCase();
+
         const updateCategory = await paymentCategory.categoryCreate.update({
-            Name: name
+            Name: nameLower
         }, {
             where: {
                 id: id
@@ -103,10 +107,12 @@ class paymentCategoryService {
             return { "status": true, "data": getAllCategory }
         };
 
+        const nameLower = name.toLowerCase();
+
         const getCategoryWithName = await paymentCategory.categoryCreate.findAll({
             raw: true,
             where:  {
-                Name: name
+                Name: nameLower
             }
         });
 

@@ -31,6 +31,8 @@ class paymentService {
 
             const datePaymentSplit = datePayment.split("/");
 
+            const nameLower = name.toLowerCase();
+
             if (parseInt(installmentsSplit[1]) > 1) {
                 let mounth = parseInt(datePaymentSplit[0]);
 
@@ -42,7 +44,7 @@ class paymentService {
 
                 for (var i = 0; i < parseInt(installmentsSplit[1]); i++) {
                     const paymentCreate = await payment.paymentCreate.create({
-                        Name: name,
+                        Name: nameLower,
                         Valor: floatValor,
                         PaymentMethod: paymentMethod,
                         Category: category,
@@ -69,7 +71,7 @@ class paymentService {
             }else {
 
                 const paymentCreate = await payment.paymentCreate.create({
-                    Name: name,
+                    Name: nameLower,
                     Valor: floatValor,
                     PaymentMethod: paymentMethod,
                     Category: category,
@@ -110,10 +112,13 @@ class paymentService {
         };
 
         const valueConvert = valor.toString().replace(',', ".");
+
         const floatValor = parseFloat(valueConvert);
 
+        const nameLower = name.toLowerCase();
+
         const updatePayment = await payment.paymentCreate.update({
-            Name: name,
+            Name: nameLower,
             Valor: floatValor,
             PaymentMethod: paymentMethod,
             Category: category,
@@ -178,10 +183,12 @@ class paymentService {
             return { "status": true, "data": getAllPayments };
         }
 
+        const nameLower = name.toLowerCase();
+
         const getPaymentName = await payment.paymentCreate.findAll({
             raw: true,
             where: {
-                Name: name
+                Name: nameLower
             }
         });
 
