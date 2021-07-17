@@ -1,4 +1,5 @@
 import paymentCategory from "../models/paymentCategory";
+import { Op } from 'sequelize';
 
 
 class paymentCategoryService {
@@ -112,7 +113,12 @@ class paymentCategoryService {
         const getCategoryWithName = await paymentCategory.categoryCreate.findAll({
             raw: true,
             where:  {
-                Name: nameLower
+                Name: {
+                    [Op.or] : [
+                        {[Op.startsWith]: nameLower},
+                        {[Op.endsWith]: nameLower}
+                    ]
+                }
             }
         });
 

@@ -62,7 +62,12 @@ class userService {
         const getNames = await userModel.userCreate.findAll({
             raw: true,
             where: {
-                Username: username
+                Username: {
+                    [Op.or] : [
+                        {[Op.startsWith]: username},
+                        {[Op.endsWith]: username}
+                    ]
+                }
             },
             order: [
                 ['Name', 'ASC']

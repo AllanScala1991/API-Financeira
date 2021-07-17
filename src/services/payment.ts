@@ -1,4 +1,5 @@
 import payment from "../models/payment";
+import { Op } from 'sequelize';
 interface IPayment {
     name : string;
     valor: number;
@@ -188,7 +189,12 @@ class paymentService {
         const getPaymentName = await payment.paymentCreate.findAll({
             raw: true,
             where: {
-                Name: nameLower
+                Name: {
+                    [Op.or] : [
+                        {[Op.startsWith]: nameLower},
+                        {[Op.endsWith]: nameLower}
+                    ]
+                }
             }
         });
 

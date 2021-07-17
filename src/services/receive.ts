@@ -1,4 +1,5 @@
 import receive from "../models/receive";
+import { Op } from 'sequelize';
 
 interface IReceive {
     name: string;
@@ -139,7 +140,12 @@ class receiveService {
         const getNameReceive = await receive.receiveCreate.findAll({
             raw: true,
             where: {
-                Name: nameLower
+                Name: {
+                    [Op.or] : [
+                        {[Op.startsWith]: nameLower},
+                        {[Op.endsWith]: nameLower}
+                    ]
+                }
             }
         });
 

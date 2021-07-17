@@ -1,4 +1,5 @@
 import paymentType from '../models/paymentType';
+import { Op } from 'sequelize';
 
 class paymentTypeService {
 
@@ -109,7 +110,12 @@ class paymentTypeService {
             const typeGetAll = await paymentType.typeCreate.findAll({
                 raw: true,
                 where: {
-                    Name: nameLower
+                    Name: {
+                        [Op.or] : [
+                            {[Op.startsWith]: nameLower},
+                            {[Op.endsWith]: nameLower}
+                        ]
+                    }
                 }
             });
     
