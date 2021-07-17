@@ -34,7 +34,7 @@ class userController {
     };
 
     async deleteUser (request : Request, response: Response) {
-        const { id } = request.body;
+        const id = request.params.id;
 
         const deleteUserService = new userService.userService();
 

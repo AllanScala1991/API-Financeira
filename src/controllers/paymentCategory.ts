@@ -24,7 +24,7 @@ class paymentCategoryController {
     };
 
     async deletePaymentCategory (request: Request, response: Response) {
-        const id = request.body.id;
+        const id = request.params.id;
 
         const paymentDeleteCategory = new categoryService.paymentCategoryService();
 

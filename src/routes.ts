@@ -21,7 +21,7 @@ const receiveController = new receive.receiveController();
 router.post('/user', userController.createUser);
 router.get("/user/:username", userAuthenticated, userController.editUserGet);
 router.put('/user', userAuthenticated, userController.editUserSave);
-router.delete('/user', userAuthenticated, userController.deleteUser);
+router.delete('/user/:id', userAuthenticated, userController.deleteUser);
 router.post('/user/recovery', userController.recoveryPassword);
 
 // ROTA DE LOGIN
@@ -30,7 +30,7 @@ router.post('/login', loginController.login);
 // ROTAS DAS CATEGORIAS DE PAGAMENTO
 router.post('/category', userAuthenticated, paymentCategoryController.createPaymentCategory);
 router.put('/category', userAuthenticated, paymentCategoryController.editPaymentCategory);
-router.delete('/category', userAuthenticated, paymentCategoryController.deletePaymentCategory);
+router.delete('/category/:id', userAuthenticated, paymentCategoryController.deletePaymentCategory);
 router.get('/category/:name', userAuthenticated, paymentCategoryController.getPaymentCategory);
 
 // ROTAS DOS TIPOS DE PAGAMENTO
