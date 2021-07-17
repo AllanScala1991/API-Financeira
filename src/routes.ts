@@ -43,6 +43,7 @@ router.get('/types/:name', userAuthenticated, paymentTypeController.getPaymentTy
 router.post('/payment', userAuthenticated, paymentController.createPayment);
 router.put('/payment', userAuthenticated, paymentController.editPayment);
 router.delete('/payment/:id', userAuthenticated, paymentController.deletePayment);
+router.delete('/payment/all/:name', userAuthenticated, paymentController.deleteAllPayment);
 router.get('/payment/:name', userAuthenticated, paymentController.getPayment);
 
 // ROTAS DOS RECEBIMENTOS

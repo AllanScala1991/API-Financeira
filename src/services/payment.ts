@@ -170,6 +170,37 @@ class paymentService {
         return { "status": true, "message": "Pagamento deletado com sucesso." };
     };
 
+    async deletePaymentAll (name : string) {
+        if (!name) {
+            return { "status": false, "message": "O campo nome deve ser preenchido." }
+        };
+
+        const nameLower = name.toLowerCase();
+
+        const nameExists = await payment.paymentCreate.findAll({
+            raw: true,
+            where: {
+                Name: nameLower
+            }
+        });
+
+        if (nameExists.length <= 0) {
+            return { "status": false, "message": "Nenhum pagamento localizado." }
+        };
+
+        const deleteAllPayment = await payment.paymentCreate.destroy({
+            where: {
+                Name: nameLower
+            }
+        });
+
+        if  (!deleteAllPayment) {
+            return { "status": false, "message": "Erro ao deletar o pagamento." }
+        };
+
+        return { "status": true, "message": "Todos as parcelas desse pagamento foram deletadas." };
+    };
+
     async getPayment (name : string) {
 
         if (name == "all") {

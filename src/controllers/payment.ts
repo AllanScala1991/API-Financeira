@@ -33,6 +33,16 @@ class paymentController {
         return response.json(newPaymentDelete);
     };
 
+    async deleteAllPayment (request: Request, response: Response) {
+        const name = request.params.name;
+
+        const newDelete = new payment.paymentService();
+
+        const allPaymentDelete = await newDelete.deletePaymentAll(name);
+
+        return response.json(allPaymentDelete);
+    };
+
     async getPayment (request: Request, response: Response) {
         const name = request.params.name;
 
