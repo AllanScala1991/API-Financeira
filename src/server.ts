@@ -22,6 +22,6 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction ) 
 });
 
 
-app.listen(21132, () => {
+app.listen(process.env.PORT || 5000, () => {
     console.log("Server is running")
 });
