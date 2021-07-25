@@ -235,6 +235,26 @@ class paymentService {
 
         return { "status": true, "data": getPaymentName };
     };
+
+    async getPaymentMonth (month : string, year : string) {
+
+        if (!month || !year) {
+            return { "status": false, "message": "Informe mês e ano que deseja consultar." }
+        };
+
+        const getTotalPayments = await payment.paymentCreate.findAll({
+            raw: true,
+            where: {
+               DatePayment: `${month}/${year}` 
+            }
+        });
+
+        if (getTotalPayments.length <= 0) {
+            return { "status": true, "data": {"Valor": 0} }
+        };
+        
+        return { "status": true, "data": getTotalPayments }
+    }
 }
 
 export default { paymentService };

@@ -52,6 +52,16 @@ class paymentController {
 
         return response.json(newPaymentGet);
     };
+
+    async getPaymentMonth (request: Request, response: Response) {
+        const {month, year} = request.body.params;
+
+        const paymentGet = new payment.paymentService();
+
+        const newPaymentGet = await paymentGet.getPaymentMonth(month, year);
+
+        return response.json(newPaymentGet);
+    };
 };
 
 export default { paymentController };
