@@ -297,6 +297,33 @@ var paymentService = /** @class */ (function () {
         });
     };
     ;
+    paymentService.prototype.getPaymentMonth = function (month, year) {
+        return __awaiter(this, void 0, void 0, function () {
+            var getTotalPayments;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!month || !year) {
+                            return [2 /*return*/, { "status": false, "message": "Informe mês e ano que deseja consultar." }];
+                        }
+                        ;
+                        return [4 /*yield*/, payment_1.default.paymentCreate.findAll({
+                                raw: true,
+                                where: {
+                                    DatePayment: month + "/" + year
+                                }
+                            })];
+                    case 1:
+                        getTotalPayments = _a.sent();
+                        if (getTotalPayments.length <= 0) {
+                            return [2 /*return*/, { "status": true, "data": { "Valor": 0 } }];
+                        }
+                        ;
+                        return [2 /*return*/, { "status": true, "data": getTotalPayments }];
+                }
+            });
+        });
+    };
     return paymentService;
 }());
 exports.default = { paymentService: paymentService };

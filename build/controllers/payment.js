@@ -128,6 +128,23 @@ var paymentController = /** @class */ (function () {
         });
     };
     ;
+    paymentController.prototype.getPaymentMonth = function (request, response) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, month, year, paymentGet, newPaymentGet;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = request.body.params, month = _a.month, year = _a.year;
+                        paymentGet = new payment_1.default.paymentService();
+                        return [4 /*yield*/, paymentGet.getPaymentMonth(month, year)];
+                    case 1:
+                        newPaymentGet = _b.sent();
+                        return [2 /*return*/, response.json(newPaymentGet)];
+                }
+            });
+        });
+    };
+    ;
     return paymentController;
 }());
 ;

@@ -45,6 +45,7 @@ router.put('/payment', authenticated_1.default, paymentController.editPayment);
 router.delete('/payment/:id', authenticated_1.default, paymentController.deletePayment);
 router.delete('/payment/all/:name', authenticated_1.default, paymentController.deleteAllPayment);
 router.get('/payment/:name', authenticated_1.default, paymentController.getPayment);
+router.get('/payment/date/:month/:year', authenticated_1.default, paymentController.getPaymentMonth);
 // ROTAS DOS RECEBIMENTOS
 router.post('/receive', authenticated_1.default, receiveController.createReceive);
 router.put('/receive', authenticated_1.default, receiveController.editReceive);
