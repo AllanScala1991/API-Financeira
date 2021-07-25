@@ -134,7 +134,7 @@ var paymentController = /** @class */ (function () {
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        _a = request.body.params, month = _a.month, year = _a.year;
+                        _a = request.params, month = _a.month, year = _a.year;
                         paymentGet = new payment_1.default.paymentService();
                         return [4 /*yield*/, paymentGet.getPaymentMonth(month, year)];
                     case 1:

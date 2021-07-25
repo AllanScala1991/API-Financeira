@@ -42,6 +42,16 @@ class receiveController {
 
         return response.json(receiveGet);
     };
+
+    async getReceiveMonth (request: Request, response: Response) {
+        const {month, year} = request.params;
+
+        const ReceiveGet = new receive.receiveService();
+
+        const newReceiveGet = await ReceiveGet.getReceiveMonth(month, year);
+
+        return response.json(newReceiveGet);
+    };
 };
 
 export default { receiveController }

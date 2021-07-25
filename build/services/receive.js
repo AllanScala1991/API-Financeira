@@ -218,6 +218,34 @@ var receiveService = /** @class */ (function () {
         });
     };
     ;
+    receiveService.prototype.getReceiveMonth = function (month, year) {
+        return __awaiter(this, void 0, void 0, function () {
+            var getTotalReceives;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!month || !year) {
+                            return [2 /*return*/, { "status": false, "message": "Informe mês e ano que deseja consultar." }];
+                        }
+                        ;
+                        return [4 /*yield*/, receive_1.default.receiveCreate.findAll({
+                                raw: true,
+                                where: {
+                                    DateReceive: month + "/" + year
+                                }
+                            })];
+                    case 1:
+                        getTotalReceives = _a.sent();
+                        if (getTotalReceives.length <= 0) {
+                            return [2 /*return*/, { "status": true, "data": { "Valor": 0 } }];
+                        }
+                        ;
+                        return [2 /*return*/, { "status": true, "data": getTotalReceives }];
+                }
+            });
+        });
+    };
+    ;
     return receiveService;
 }());
 ;

@@ -155,6 +155,26 @@ class receiveService {
 
         return { "status": true, "data": getNameReceive };
     };
+
+    async getReceiveMonth (month : string, year : string) {
+
+        if (!month || !year) {
+            return { "status": false, "message": "Informe mês e ano que deseja consultar." }
+        };
+
+        const getTotalReceives = await receive.receiveCreate.findAll({
+            raw: true,
+            where: {
+               DateReceive: `${month}/${year}` 
+            }
+        });
+
+        if (getTotalReceives.length <= 0) {
+            return { "status": true, "data": {"Valor": 0} }
+        };
+        
+        return { "status": true, "data": getTotalReceives }
+    };
 };
 
 export default { receiveService };

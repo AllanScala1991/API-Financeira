@@ -51,3 +51,4 @@ router.post('/receive', authenticated_1.default, receiveController.createReceive
 router.put('/receive', authenticated_1.default, receiveController.editReceive);
 router.delete('/receive/:id', authenticated_1.default, receiveController.deleteReceive);
 router.get('/receive/:name', authenticated_1.default, receiveController.getReceive);
+router.get('/receive/date/:month/:year', authenticated_1.default, receiveController.getReceiveMonth);

@@ -111,6 +111,23 @@ var receiveController = /** @class */ (function () {
         });
     };
     ;
+    receiveController.prototype.getReceiveMonth = function (request, response) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, month, year, ReceiveGet, newReceiveGet;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = request.params, month = _a.month, year = _a.year;
+                        ReceiveGet = new receive_1.default.receiveService();
+                        return [4 /*yield*/, ReceiveGet.getReceiveMonth(month, year)];
+                    case 1:
+                        newReceiveGet = _b.sent();
+                        return [2 /*return*/, response.json(newReceiveGet)];
+                }
+            });
+        });
+    };
+    ;
     return receiveController;
 }());
 ;
