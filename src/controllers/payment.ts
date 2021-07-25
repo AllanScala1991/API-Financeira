@@ -54,7 +54,7 @@ class paymentController {
     };
 
     async getPaymentMonth (request: Request, response: Response) {
-        const {month, year} = request.body.params;
+        const {month, year} = request.params;
 
         const paymentGet = new payment.paymentService();
 
