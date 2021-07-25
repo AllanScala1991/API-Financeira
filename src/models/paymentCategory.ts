@@ -12,6 +12,6 @@ const categoryCreate = database.connection.define('paymentCategory', {
     },
 });
 
-categoryCreate.sync({ force: true });
+categoryCreate.sync({ force: false });
 
 export default { categoryCreate };

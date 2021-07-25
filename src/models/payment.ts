@@ -84,6 +84,6 @@ const paymentCreate = database.connection.define("payments", {
     },
 });
 
-paymentCreate.sync({ force: true });
+paymentCreate.sync({ force: false });
 
 export default { paymentCreate };
