@@ -254,6 +254,22 @@ class paymentService {
         };
         
         return { "status": true, "data": getTotalPayments }
+    };
+
+    async getPaymentRefer (paymentRefer: string, datePayment: string) {
+        const payments = await payment.paymentCreate.findAll({
+            raw: true,
+            where: {
+                PaymentRefer: paymentRefer,
+                DatePayment: datePayment
+            }
+        });
+
+        if (payments.length <= 0) {
+            return { "status": false, "message": "Nenhum pagamento localizado." }
+        };
+
+        return { "status": true, "data": payments };
     }
 }
 

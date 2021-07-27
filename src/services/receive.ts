@@ -175,6 +175,22 @@ class receiveService {
         
         return { "status": true, "data": getTotalReceives }
     };
+
+    async getReceiveRefer (receiveRefer: string, dateReceive: string) {
+        const receives = await receive.receiveCreate.findAll({
+            raw: true,
+            where: {
+                ReceiveRefer: receiveRefer,
+                DateReceive: dateReceive
+            }
+        });
+
+        if (receives.length <= 0) {
+            return { "status": false, "message": "Nenhum recebimento localizado." }
+        };
+
+        return { "status": true, "data": receives };
+    };
 };
 
 export default { receiveService };

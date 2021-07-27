@@ -62,6 +62,16 @@ class paymentController {
 
         return response.json(newPaymentGet);
     };
+
+    async getPaymentRefer (request: Request, response: Response) {
+        const { paymentRefer, datePayment } = request.params;
+
+        const paymentGet = new payment.paymentService();
+
+        const newPaymentGet = await paymentGet.getPaymentRefer(paymentRefer, datePayment);
+
+        return response.json(newPaymentGet);
+    }
 };
 
 export default { paymentController };

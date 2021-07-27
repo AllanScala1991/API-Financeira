@@ -52,6 +52,16 @@ class receiveController {
 
         return response.json(newReceiveGet);
     };
+
+    async getReceiveRefer (request: Request, response: Response) {
+        const {receiveRefer, dateReceive} = request.params;
+
+        const receiveGet = new receive.receiveService();
+
+        const newReceiveGet = await receiveGet.getReceiveRefer(receiveRefer, dateReceive);
+
+        return response.json(newReceiveGet);
+    };
 };
 
 export default { receiveController }
