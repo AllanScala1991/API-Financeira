@@ -54,11 +54,11 @@ class receiveController {
     };
 
     async getReceiveRefer (request: Request, response: Response) {
-        const {receiveRefer, dateReceive} = request.params;
+        const {receiveRefer, monthReceive, yearReceive} = request.params;
 
         const receiveGet = new receive.receiveService();
 
-        const newReceiveGet = await receiveGet.getReceiveRefer(receiveRefer, dateReceive);
+        const newReceiveGet = await receiveGet.getReceiveRefer(receiveRefer, `${monthReceive}/${yearReceive}`);
 
         return response.json(newReceiveGet);
     };

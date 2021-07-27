@@ -46,7 +46,7 @@ router.delete('/payment/:id', userAuthenticated, paymentController.deletePayment
 router.delete('/payment/all/:name', userAuthenticated, paymentController.deleteAllPayment);
 router.get('/payment/:name', userAuthenticated, paymentController.getPayment);
 router.get('/payment/date/:month/:year', userAuthenticated, paymentController.getPaymentMonth);
-router.get('/payment/refer/:paymentRefer/:datePayment', userAuthenticated, paymentController.getPaymentRefer);
+router.get('/payment/refer/:paymentRefer/:monthPayment/:yearPayment', userAuthenticated, paymentController.getPaymentRefer);
 
 // ROTAS DOS RECEBIMENTOS
 router.post('/receive', userAuthenticated, receiveController.createReceive);
@@ -54,6 +54,6 @@ router.put('/receive', userAuthenticated, receiveController.editReceive);
 router.delete('/receive/:id', userAuthenticated, receiveController.deleteReceive);
 router.get('/receive/:name', userAuthenticated, receiveController.getReceive);
 router.get('/receive/date/:month/:year', userAuthenticated, receiveController.getReceiveMonth);
-router.get('/receive/refer/:receiveRefer/:dateReceive', userAuthenticated, receiveController.getReceiveRefer);
+router.get('/receive/refer/:receiveRefer/:monthReceive/:yearReceive', userAuthenticated, receiveController.getReceiveRefer);
 
 export { router };

@@ -64,11 +64,11 @@ class paymentController {
     };
 
     async getPaymentRefer (request: Request, response: Response) {
-        const { paymentRefer, datePayment } = request.params;
+        const { paymentRefer, monthPayment, yearPayment } = request.params;
 
         const paymentGet = new payment.paymentService();
 
-        const newPaymentGet = await paymentGet.getPaymentRefer(paymentRefer, datePayment);
+        const newPaymentGet = await paymentGet.getPaymentRefer(paymentRefer, `${monthPayment}/${yearPayment}`);
 
         return response.json(newPaymentGet);
     }
