@@ -3,7 +3,6 @@ const config = require('./config');
 
 
 describe("Login route tests", () => {
-    beforeAll(() => jest.setTimeout(60000));
 
     it("Success login - expect return JWT", () => {
 
