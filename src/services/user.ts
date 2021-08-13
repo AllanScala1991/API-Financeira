@@ -160,13 +160,13 @@ class userService {
         let transporter  = nodemailer.createTransport({
             service : 'gmail',
             auth: {
-                user: "myexpenses.product@gmail.com",
-                pass: "allan100291"
+                user: "email",
+                pass: "email"
             }
         });
 
         let options = {
-            from : "myexpenses.product@gmail.com",
+            from : "email",
             to: email,
             subject: "Recuperação de senha - My Expenses",
             text: `Olá, obrigado por utilizar o APP My Expenses, foi gerada uma nova senha, acesse agora com : ${passwordDefault}`
