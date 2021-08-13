@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
 
-const connection = new Sequelize('myexpensesapp', 'myexpensesapp','allan100291', {
-    host: 'mysql.myexpenses-app-api.kinghost.net',
+const connection = new Sequelize('your database', 'your login','your password', {
+    host: 'your host',
     dialect: 'mysql'
     //storage: __dirname + '/database.db'
 })
